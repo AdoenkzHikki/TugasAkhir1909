@@ -1,0 +1,23 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}\.php -f
+    RewriteRule ^(.*)$ $1.php 
+    RewriteRule ^dashboard/?$ index.php [L]
+    RewriteRule ^pendaftar/?$ index.php?page=pendaftar [L]
+    RewriteRule ^pendaftar/delete/([0-9]+)?$ index.php?page=pendaftar&delete=$1 [L]
+    RewriteRule ^pendaftar/tambah/?$ index.php?page=tambah [L]
+    RewriteRule ^pendaftar/ubah/([0-9]+)?$ index.php?page=edit&nik=$1 [L]
+    RewriteRule ^tumbuh/?$ index.php?page=dataanak [L]
+    RewriteRule ^tumbuh/detail/([0-9]+)/?$ index.php?page=detailinfo&nik=$1 [L]
+    RewriteRule ^tumbuh/tambah/([0-9]+)/?$ index.php?page=tambah-data&nik=$1 [L]
+    RewriteRule ^tumbuh/cetak/([0-9]+)/?$ index.php?page=cetaktmb&nik=$1 [L]
+    RewriteRule ^tumbuh/tambahtinggi/([0-9]+)/?$ index.php?page=tambah-tinggi&nik=$1 [L]
+    RewriteRule ^tumbuh/editberat/([0-9]+)/?$ index.php?page=editberat&nik=$1 [L]
+    RewriteRule ^tumbuh/edittinggi/([0-9]+)/?$ index.php?page=edittinggi&nik=$1 [L]
+    RewriteRule ^tumbuh/grafik/([0-9]+)/?$ index.php?page=detailgrafik&nik=$1 [L]
+    RewriteRule ^tumbuh/delete/([0-9]+)?$ index.php?page=detailinfo&delete=$1 [L]
+    #Menghandle Agar Tidak Nyasar / Redirect ke Halaman 404
+    RewriteRule ^([0-9a-zA-Z-]+)/$ index.php?page=$1 [L] 
+    Options All -Indexes
+</IfModule>

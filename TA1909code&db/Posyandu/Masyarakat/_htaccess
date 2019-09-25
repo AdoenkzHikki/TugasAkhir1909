@@ -1,0 +1,19 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}\.php -f
+    RewriteRule ^(.*)$ $1.php
+    RewriteRule ^dashboard/?$ index.php [L]
+    RewriteRule ^pendaftar/?$ index.php?page=pendaftar [L]
+    RewriteRule ^tumbuh/?$ index.php?page=detailinfo [L]
+    RewriteRule ^tumbuh/detail/([0-9]+)/?$ index.php?page=detailinfo&nik=$1 [L] 
+    RewriteRule ^tumbuh/detail/grafik/([0-9]+)/?$ index.php?page=detailgrafik&nik=$1 [L] 
+    RewriteRule ^imun/?$ index.php?page=dataimunisasi [L]
+    RewriteRule ^vitamin/?$ index.php?page=datavitamin [L]
+    RewriteRule ^user/?$ index.php?page=datauser [L]
+    RewriteRule ^user/tambah/?$ index.php?page=add-datauser [L]
+    RewriteRule ^user/edit/([0-9a-zA-Z-]+)/?$ index.php?page=edit-datauser&id=$1 [L]
+    #Menghandle Agar Tidak Nyasar / Redirect ke Halaman 404
+    RewriteRule ^([0-9a-zA-Z-]+)/$ index.php?page=$1 [L] 
+    Options All -Indexes
+</IfModule>
